@@ -3,16 +3,17 @@ import time
 
 def time_checker(func):
 
-    def wrapper(number):
+    def wrapper(**kwargs):
         t0 = time.time()
-        func(number)
+        func(kwargs)
         t1 = time.time()
         print("Time elapsed:", t1-t0, "seconds")
     return wrapper
 
 
 @time_checker
-def useful_function(number=10101):
+def useful_function(kwargs):
+    number = kwargs['number']
     counter = 0
     for i in range(number+1):
         for k in range(i+1, number+1):
